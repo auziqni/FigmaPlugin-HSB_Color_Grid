@@ -36,6 +36,25 @@ export const App = () => {
     );
   };
 
+  const createbox = () => {
+    dispatchTS("createColorGrid", {
+      step: step,
+      hue: sliderHueValue,
+      saturationMin: sliderSaturationRangeMinValue,
+      saturationMax: sliderSaturationRangeMaxValue,
+      brightnessmin: sliderBrigtnessRangeMinValue,
+      brightnessmax: sliderBrigtnessRangeMaxValue,
+    });
+
+    listenTS(
+      "createColorGridCallback",
+      (res) => {
+        console.log("createboxCallback result: ", res);
+      },
+      true
+    );
+  };
+
   const [lightOrDarkMode, setLightOrDarkMode] = useState(getColorTheme());
   useEffect(() => {
     subscribeColorTheme((mode) => {
@@ -75,14 +94,17 @@ export const App = () => {
         </div>
         <div>
           step
-          <div>
+          <div className="flex flex-row items-center justify-between w-full px-16 ">
             <Button onClick={() => setStep(step - 1)}>-</Button>
             {step}
             <Button onClick={() => setStep(step + 1)}>+</Button>
           </div>
         </div>
-
-        <Button onClick={helloWorld}>Hello World</Button>
+        <div className="flex items-center justify-center w-full mt-10">
+          <Button className="bg-blue-700 w-36" onClick={createbox}>
+            create
+          </Button>
+        </div>
       </main>
     </>
   );
