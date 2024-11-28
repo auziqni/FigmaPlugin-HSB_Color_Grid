@@ -73,8 +73,10 @@ export default function DoubleRangeSlider({
           />
         </div>
         <div className="flex justify-between mt-4">
-          <span className="text-sm text-gray-600">Min: {minValue}</span>
-          <span className="text-sm text-gray-600">Max: {maxValue}</span>
+          <input type="number" value={minValue} onChange={handleMinChange} />
+          <input type="number" value={maxValue} onChange={handleMaxChange} />
+          {/* <span className="text-sm text-gray-600">Min: {minValue}</span>
+          <span className="text-sm text-gray-600">Max: {maxValue}</span> */}
         </div>
       </div>
     </div>

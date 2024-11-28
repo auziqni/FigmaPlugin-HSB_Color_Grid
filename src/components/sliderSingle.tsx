@@ -50,7 +50,8 @@ export default function Slider({
           />
         </div>
         <div className="flex justify-center mt-4">
-          <span className="text-sm text-gray-600">Value: {value}</span>
+          {/* <span className="text-sm text-gray-600">Value: {value}</span> */}
+          <input type="number" value={value} onChange={handleChange} />
         </div>
       </div>
     </div>
