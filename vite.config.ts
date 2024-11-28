@@ -1,8 +1,9 @@
+import path from "path";
 import { defineConfig } from "vite";
 import { viteSingleFile } from "vite-plugin-singlefile";
 import { figmaPlugin, figmaPluginInit, runAction } from "vite-figma-plugin";
 
-import react from "@vitejs/plugin-react"; 
+import react from "@vitejs/plugin-react";
 
 import { config } from "./figma.config";
 
@@ -20,14 +21,15 @@ figmaPluginInit();
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(), 
-    viteSingleFile(),
-    figmaPlugin(config, mode),
-  ],
+  plugins: [react(), viteSingleFile(), figmaPlugin(config, mode)],
   build: {
     assetsInlineLimit: Infinity,
     emptyOutDir: false,
     outDir: ".tmp",
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
 });
