@@ -5,10 +5,14 @@ import {
   listenTS,
   subscribeColorTheme,
 } from "./utils/utils";
+import { Button } from "./components/ui/button";
+import Slider from "./components/SliderSingle";
+import DoubleRangeSlider from "./components/sliderRange";
 
 export const App = () => {
-  const [count, setCount] = useState(0);
-  const increment = () => setCount((prev) => prev + 1);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(100);
+  const [value, setValue] = useState(150);
 
   const helloWorld = () => {
     dispatchTS("hello", {
@@ -33,7 +37,15 @@ export const App = () => {
   }, []);
   return (
     <>
-      <main className="w-full h-full text-blue-300 bg-white"> hello world</main>
+      <main className="w-full h-full bg-white">
+        <DoubleRangeSlider
+          minValue={minValue}
+          maxValue={maxValue}
+          onMinChange={setMinValue}
+          onMaxChange={setMaxValue}
+        />
+        <Slider value={value} onChange={setValue} />
+      </main>
     </>
   );
 };

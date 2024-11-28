@@ -19,7 +19,11 @@
       "./node_modules/@types",
       "./src/globals.d.ts",
       "shared/universals.d.ts"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src/**/*.d.ts",
