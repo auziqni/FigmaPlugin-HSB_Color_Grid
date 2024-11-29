@@ -5,6 +5,7 @@ interface SingleRangeSliderProps {
   onChange: (value: number) => void;
   minRange?: number;
   maxRange?: number;
+  description?: string;
 }
 
 export default function Slider({
@@ -12,6 +13,7 @@ export default function Slider({
   onChange,
   minRange = 0,
   maxRange = 100,
+  description = "",
 }: SingleRangeSliderProps) {
   useEffect(() => {
     onChange(minRange);
@@ -32,7 +34,8 @@ export default function Slider({
   return (
     <div className="w-full max-w-md p-4 mx-auto">
       <div className="relative">
-        <div className="relative h-2 mt-8">
+        <p className="font-bold">{description}</p>
+        <div className="relative h-2 mt-4">
           <div className="absolute w-full h-2 bg-gray-200 rounded"></div>
           <div
             className="absolute h-2 bg-blue-500 rounded"

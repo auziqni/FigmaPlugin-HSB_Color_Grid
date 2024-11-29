@@ -7,6 +7,7 @@ interface DoubleRangeSliderProps {
   onMaxChange: (value: number) => void;
   setMinRange?: number;
   setMaxRange?: number;
+  description?: string;
 }
 
 export default function DoubleRangeSlider({
@@ -16,6 +17,7 @@ export default function DoubleRangeSlider({
   onMaxChange,
   setMinRange = 0,
   setMaxRange = 100,
+  description = "",
 }: DoubleRangeSliderProps) {
   useEffect(() => {
     // Set nilai awal ketika komponen dimount
@@ -46,7 +48,8 @@ export default function DoubleRangeSlider({
   return (
     <div className="w-full max-w-md p-4 mx-auto">
       <div className="relative">
-        <div className="relative h-2 mt-8">
+        <p className="font-bold">{description}</p>
+        <div className="relative h-2 mt-4">
           <div className="absolute w-full h-2 bg-gray-200 rounded"></div>
           <div
             className="absolute h-2 bg-blue-500 rounded"
